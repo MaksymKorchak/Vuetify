@@ -1,2 +1,2 @@
 # Vuetify
-Todo App (Vuetify)
+Simple Vuetify example
