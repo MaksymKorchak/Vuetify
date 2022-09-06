@@ -53,44 +53,48 @@
 </template>
 
 <script>
+  import dbProjects from '@/utils/fetchProjects';
+
   export default {
+
     data () {
       return {
-        projects: [
-          { title: 'Code up the homepage', person: 'Max', due: '10th Jan 2022', status: 'complete', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
-          { title: 'Design a new website', person: 'Serge', due: '1st Jan 2022', status: 'ongoing', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
-          { title: 'Design video thumbnails', person: 'Oliver', due: '20th Dec 2022', status: 'complete', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
-          { title: 'Create a community forum', person: 'Apollo', due: '20th Oct 2022', status: 'overdue', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
-        ]
+        projects: []
       }
     },
+
+    created () {
+      this.projects = dbProjects;
+    },
+
     methods: {
       sortBy(prop) {
-        this.projects.sort((a,b) => a[prop] < b[prop] ? -1: 1)
+        this.projects.sort((a,b) => a[prop] < b[prop] ? -1: 1);
       }
     }
+
   }
 </script>
 
-<style scope>
+<style scoped>
   .project.complete {
-  border-left: 8px solid #3CD1C2;
-}
-.project.ongoing {
-  border-left: 8px solid orange
-}
-.project.overdue {
-  border-left: 8px solid tomato;
-}
-.v-chip.complete {
-  background: #3cd1c2 !important;
-}
-.v-chip.ongoing {
-  background: #ffaa2c !important;
-}
-.v-chip.overdue {
-  background: #f83e70 !important;
-}
+    border-left: 8px solid #3CD1C2;
+  }
+  .project.ongoing {
+    border-left: 8px solid orange
+  }
+  .project.overdue {
+    border-left: 8px solid tomato;
+  }
+  .v-chip.complete {
+    background: #3cd1c2 !important;
+  }
+  .v-chip.ongoing {
+    background: #ffaa2c !important;
+  }
+  .v-chip.overdue {
+    background: #f83e70 !important;
+  }
 </style>
 
 

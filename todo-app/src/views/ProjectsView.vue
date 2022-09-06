@@ -22,22 +22,26 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      projects: [
-          { title: 'Design a new website', person: 'Serge', due: '1st Jan 2022', status: 'ongoing', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
-          { title: 'Code up the homepage', person: 'Max', due: '10th Jan 2022', status: 'complete', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
-          { title: 'Design video thumbnails', person: 'Oliver', due: '20th Dec 2022', status: 'complete', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
-          { title: 'Create a community forum', person: 'Apollo', due: '20th Oct 2022', status: 'overdue', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
-        ]
+  import dbProjects from '@/utils/fetchProjects';
+
+  export default {
+
+    data() {
+      return {
+        projects: []
+        }
+    },
+
+    computed: {
+      myProjects() {
+        return this.projects.filter(project => project.person === 'Max')
       }
-  },
-  computed: {
-    myProjects() {
-      return this.projects.filter(project => project.person === 'Max')
+    },
+
+    created() {
+      this.projects = dbProjects;
     }
+
   }
-}
 </script>
 

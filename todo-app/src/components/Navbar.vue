@@ -1,6 +1,11 @@
 <template>
     
     <nav>
+        <v-snackbar  v-model="snackbar" :timeout="4000" top color="success">
+            <span>Awesome! New project was added.</span>
+            <v-btn text color="white" @click="snackbar = false">Close</v-btn>
+        </v-snackbar>
+
         <v-app-bar flat app>
             <v-app-bar-nav-icon @click="drawer = !drawer" class="grey--text"></v-app-bar-nav-icon>
             <v-app-bar-title class="text-uppercase grey--text">
@@ -37,6 +42,9 @@
                     </v-avatar>
                     <p class="white--text text-center subheading mt-1">Max</p>
                 </v-flex>
+                <v-flex class="mt-4 mb-3">
+                    <Popup @projectAdded = "snackbar = true"/>
+                </v-flex>
             </v-layout>
             <v-list>
                 <v-list-item v-for="link in links" :key="link.text" router :to="link.route">
@@ -54,18 +62,26 @@
 </template>
 
 <script>
+    import Popup from './Popup.vue';
+
     export default {
         name: 'nav-bar',
+
+        components :{
+            Popup,
+        },
 
         data() {
             return {
                 drawer: false,
+                snackbar: false,
                 links: [
                     { icon: 'mdi-view-dashboard-variant', text: 'Dashboard', route: '/' },
                     { icon: 'mdi-folder', text: 'My Projects', route: '/projects' },
-                    { icon: 'mdi-account-group', text: 'Team', route: '/team' },
+                    { icon: 'mdi-account-group', text: 'Team', route: '/team' }
                 ]
             }
         }
+
     }
 </script>

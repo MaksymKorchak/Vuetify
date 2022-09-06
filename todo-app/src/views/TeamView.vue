@@ -31,6 +31,7 @@
 
 <script>
   export default {
+
     data(){
       return {
         team: [
@@ -42,6 +43,7 @@
         ]
       }
     },
+    
   }
 </script>
 
